@@ -1,0 +1,10 @@
+# Project exclude paths
+/.gradle/
+/build-conventions/.gradle/
+/build-conventions/kotlin/build/
+/build-conventions/testing/build/
+/build-conventions/util/build/
+/build-settings/.gradle/
+/build-settings/dependencies/build/
+/library/.gradle/
+/sample/.gradle/
