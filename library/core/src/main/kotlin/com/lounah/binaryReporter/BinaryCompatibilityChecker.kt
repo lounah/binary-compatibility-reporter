@@ -1,9 +1,9 @@
 package com.lounah.binaryReporter
 
 import com.lounah.binaryReporter.internal.KotlinBinaryCompatibilityChecker
-import com.lounah.binaryReporter.internal.compatator.ClassesSignatureComparator
-import com.lounah.binaryReporter.internal.compatator.FieldsSignatureComparator
-import com.lounah.binaryReporter.internal.compatator.MethodsSignatureComparator
+import com.lounah.binaryReporter.internal.compatators.classes.ClassesSignatureComparator
+import com.lounah.binaryReporter.internal.compatators.fields.FieldsSignatureComparator
+import com.lounah.binaryReporter.internal.compatators.methods.MethodsSignatureComparator
 import java.util.jar.JarFile
 
 public interface BinaryCompatibilityChecker {

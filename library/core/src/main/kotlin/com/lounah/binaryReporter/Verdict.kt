@@ -19,7 +19,7 @@ public data class Verdict(
         return when {
             violations.isEmpty() -> "No binary incompatible changes found."
             else -> {
-                "Found ${violations.size} binary incompatible changes:\n" +
+                "Found ${violations.size} binary incompatible change(s):\n" +
                         describeViolations()
             }
         }

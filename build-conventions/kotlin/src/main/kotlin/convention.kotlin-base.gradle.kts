@@ -8,7 +8,8 @@ tasks {
     withType<KotlinCompile>().configureEach {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
-            freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn" +
+            freeCompilerArgs = freeCompilerArgs +
+                    "-Xopt-in=kotlin.RequiresOptIn" +
                     "-progressive"
         }
     }

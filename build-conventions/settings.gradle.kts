@@ -19,7 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-//
 include("kotlin")
 include("testing")
 include("util")
