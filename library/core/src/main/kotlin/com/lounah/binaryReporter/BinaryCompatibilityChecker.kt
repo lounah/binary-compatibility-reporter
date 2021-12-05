@@ -1,23 +1,28 @@
 package com.lounah.binaryReporter
 
-import com.lounah.binaryReporter.BinaryCompatibilityViolation.*
+import com.lounah.binaryReporter.internal.KotlinBinaryCompatibilityChecker
+import com.lounah.binaryReporter.internal.compatator.ClassesSignatureComparator
+import com.lounah.binaryReporter.internal.compatator.FieldsSignatureComparator
+import com.lounah.binaryReporter.internal.compatator.MethodsSignatureComparator
 import java.util.jar.JarFile
 
 public interface BinaryCompatibilityChecker {
 
     public fun check(oldClasses: JarFile, newClasses: JarFile): Verdict
 
-    public data class Verdict(
-        public val violations: List<BinaryCompatibilityViolation>
-    ) {
+    public companion object {
 
-        val classesViolations: List<BinaryCompatibilityViolation>
-            get() = violations.filterIsInstance<ClassSignature>()
-
-        val methodsViolations: List<BinaryCompatibilityViolation>
-            get() = violations.filterIsInstance<MethodSignature>()
-
-        val fieldsViolations: List<BinaryCompatibilityViolation>
-            get() = violations.filterIsInstance<FieldSignature>()
+        public operator fun invoke(
+            ignoredPackages: Set<String>,
+            ignoredClasses: Set<String>
+        ): BinaryCompatibilityChecker {
+            return KotlinBinaryCompatibilityChecker(
+                ignoredPackages,
+                ignoredClasses,
+                ClassesSignatureComparator(),
+                MethodsSignatureComparator(),
+                FieldsSignatureComparator()
+            )
+        }
     }
 }

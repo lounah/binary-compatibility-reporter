@@ -1,8 +1,8 @@
 package com.lounah.binaryReporter.internal
 
 import com.lounah.binaryReporter.BinaryCompatibilityChecker
-import com.lounah.binaryReporter.BinaryCompatibilityChecker.Verdict
 import com.lounah.binaryReporter.BinarySignatureComparator
+import com.lounah.binaryReporter.Verdict
 import kotlinx.validation.api.ClassBinarySignature
 import kotlinx.validation.api.filterOutNonPublic
 import kotlinx.validation.api.loadApiFromJvmClasses
@@ -17,14 +17,15 @@ internal class KotlinBinaryCompatibilityChecker(
 ) : BinaryCompatibilityChecker {
 
     override fun check(oldClasses: JarFile, newClasses: JarFile): Verdict {
-        return oldClasses.extractPublicApi()
+        val binaryCompatibilityViolations = oldClasses.extractPublicApi()
             .associateByClassName(newClasses.extractPublicApi())
             .flatMap { (oldClass, newClass) ->
                 classesComparator.compare(oldClass, newClass)
                     .plus(methodsComparator.compare(oldClass, newClass))
                     .plus(fieldsComparator.compare(oldClass, newClass))
             }
-            .run(::Verdict)
+
+        return Verdict(binaryCompatibilityViolations)
     }
 
     private fun JarFile.extractPublicApi(): List<ClassBinarySignature> {

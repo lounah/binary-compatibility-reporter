@@ -4,22 +4,31 @@ import kotlinx.validation.api.ClassBinarySignature
 
 public interface BinaryCompatibilityViolation {
 
-    public val source: ClassBinarySignature
-
+    public val oldSignature: ClassBinarySignature?
+    public val newSignature: ClassBinarySignature?
     public val description: String
 
     public class ClassSignature(
-        override val source: ClassBinarySignature,
+        override val oldSignature: ClassBinarySignature?,
+        override val newSignature: ClassBinarySignature?,
         override val description: String
     ) : BinaryCompatibilityViolation
 
     public class MethodSignature(
-        override val source: ClassBinarySignature,
+        override val oldSignature: ClassBinarySignature?,
+        override val newSignature: ClassBinarySignature?,
         override val description: String
     ) : BinaryCompatibilityViolation
 
     public class FieldSignature(
-        override val source: ClassBinarySignature,
+        override val oldSignature: ClassBinarySignature?,
+        override val newSignature: ClassBinarySignature?,
         override val description: String
     ) : BinaryCompatibilityViolation
+
+    public object Empty : BinaryCompatibilityViolation {
+        override val oldSignature: ClassBinarySignature? = null
+        override val newSignature: ClassBinarySignature? = null
+        override val description: String = ""
+    }
 }
