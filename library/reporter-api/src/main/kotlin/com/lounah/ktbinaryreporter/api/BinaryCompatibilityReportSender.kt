@@ -4,5 +4,5 @@ import com.lounah.ktbinaryreporter.Verdict
 
 public interface BinaryCompatibilityReportSender {
 
-    public fun send(verdict: Verdict)
+    public suspend fun send(verdict: Verdict)
 }
