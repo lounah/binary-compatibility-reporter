@@ -1,14 +1,14 @@
 [versions]
-kotlin = "1.6.0"
-detekt = "1.18.1"
-kotlinBinaryCompatibility = "0.8.0"
 asm = "9.0"
 
 [libraries]
-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
-
 asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
 asmTree = { module = "org.ow2.asm:asm-tree", version.ref = "asm" }
 
+okhttpLogging = "com.squareup.okhttp3:logging-interceptor:4.9.0"
+retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+
+kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 kotlinBinaryCompatibility = "org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0"
+
+detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1"

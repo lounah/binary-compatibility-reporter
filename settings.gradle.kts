@@ -19,3 +19,4 @@ includeBuild("sample")
 
 include(":library:core")
 include(":library:descriptor")
+include(":library:reporter-api")
