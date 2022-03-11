@@ -20,12 +20,10 @@ public interface BitbucketApi {
 
     public companion object {
 
-        private const val BASE_URL: String = ""
-
         public fun create(
             username: String,
             password: String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): BitbucketApi {
             return RetrofitProvider(baseUrl, logging).provide(username, password).create()
@@ -33,7 +31,7 @@ public interface BitbucketApi {
 
         public fun create(
             credentials: String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): BitbucketApi {
             return RetrofitProvider(baseUrl, logging).provide(credentials).create()
@@ -41,7 +39,7 @@ public interface BitbucketApi {
 
         public fun create(
             tokenProvider: () -> String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): BitbucketApi {
             return RetrofitProvider(baseUrl, logging).provide(tokenProvider).create()

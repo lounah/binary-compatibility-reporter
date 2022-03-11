@@ -18,7 +18,7 @@ public interface GithubApi {
 
     public companion object {
 
-        private const val BASE_URL: String = ""
+        private const val BASE_URL: String = "https://api.github.com/"
 
         public fun create(
             username: String,
