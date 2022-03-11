@@ -2,8 +2,13 @@
 kotlin = "1.6.0"
 detekt = "1.18.1"
 kotlinBinaryCompatibility = "0.8.0"
+asm = "9.0"
 
 [libraries]
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlinBinaryCompatibility = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version.ref = "kotlinBinaryCompatibility" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+
+asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
+asmTree = { module = "org.ow2.asm:asm-tree", version.ref = "asm" }
+
+kotlinBinaryCompatibility = "org.jetbrains.kotlinx:binary-compatibility-validator:0.8.0"

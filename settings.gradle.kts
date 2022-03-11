@@ -18,3 +18,4 @@ includeBuild("build-conventions")
 includeBuild("sample")
 
 include(":library:core")
+include(":library:descriptor")
