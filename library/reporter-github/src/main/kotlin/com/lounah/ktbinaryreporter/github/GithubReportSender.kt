@@ -1,0 +1,24 @@
+package com.lounah.ktbinaryreporter.github
+
+import com.lounah.ktbinaryreporter.Verdict
+import com.lounah.ktbinaryreporter.api.BinaryCompatibilityReportSender
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+public class GitlabReportSender(
+    private val api: GithubApi,
+    private val owner: String,
+    private val repo: String,
+    private val pullId: String
+) : BinaryCompatibilityReportSender {
+
+    override suspend fun send(verdict: Verdict) {
+        return withContext(Dispatchers.IO) {
+            api.sendComment(owner, repo, pullId, verdict.asGithubComment())
+        }
+    }
+
+    private fun Verdict.asGithubComment(): String {
+        return this.toString()
+    }
+}
