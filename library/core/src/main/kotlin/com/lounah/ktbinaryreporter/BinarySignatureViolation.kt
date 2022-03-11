@@ -1,6 +1,7 @@
 package com.lounah.ktbinaryreporter
 
 import kotlinx.validation.api.ClassBinarySignature
+import kotlinx.validation.api.FieldBinarySignature
 import kotlinx.validation.api.MethodBinarySignature
 
 public interface BinaryCompatibilityViolation {
@@ -21,8 +22,9 @@ public interface BinaryCompatibilityViolation {
     ) : BinaryCompatibilityViolation
 
     public class FieldSignature(
-        override val oldClass: ClassBinarySignature?,
-        override val newClass: ClassBinarySignature?,
+        private val clazz: ClassBinarySignature?,
+        private val oldField: FieldBinarySignature?,
+        private val newField: FieldBinarySignature?,
         override val description: String
     ) : BinaryCompatibilityViolation
 
