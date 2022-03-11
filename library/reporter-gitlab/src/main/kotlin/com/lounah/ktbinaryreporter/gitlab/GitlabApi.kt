@@ -17,12 +17,10 @@ public interface GitlabApi {
 
     public companion object {
 
-        private const val BASE_URL: String = "https://gitlab.example.com/api/v4/"
-
         public fun create(
             username: String,
             password: String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): GitlabApi {
             return RetrofitProvider(baseUrl, logging).provide(username, password).create()
@@ -30,7 +28,7 @@ public interface GitlabApi {
 
         public fun create(
             credentials: String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): GitlabApi {
             return RetrofitProvider(baseUrl, logging).provide(credentials).create()
@@ -38,7 +36,7 @@ public interface GitlabApi {
 
         public fun create(
             tokenProvider: () -> String,
-            baseUrl: String = BASE_URL,
+            baseUrl: String,
             logging: Boolean = false
         ): GitlabApi {
             return RetrofitProvider(baseUrl, logging).provide(tokenProvider).create()
