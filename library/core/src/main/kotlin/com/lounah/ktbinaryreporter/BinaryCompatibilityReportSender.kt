@@ -1,6 +1,4 @@
-package com.lounah.ktbinaryreporter.api
-
-import com.lounah.ktbinaryreporter.Verdict
+package com.lounah.ktbinaryreporter
 
 public interface BinaryCompatibilityReportSender {
 

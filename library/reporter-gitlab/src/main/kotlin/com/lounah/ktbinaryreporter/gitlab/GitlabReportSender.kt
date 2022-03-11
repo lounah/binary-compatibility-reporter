@@ -1,7 +1,7 @@
 package com.lounah.ktbinaryreporter.gitlab
 
 import com.lounah.ktbinaryreporter.Verdict
-import com.lounah.ktbinaryreporter.api.BinaryCompatibilityReportSender
+import com.lounah.ktbinaryreporter.BinaryCompatibilityReportSender
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,6 +1,6 @@
 package com.lounah.ktbinaryreporter.plugin.di
 
-import com.lounah.ktbinaryreporter.api.BinaryCompatibilityReportSender
+import com.lounah.ktbinaryreporter.BinaryCompatibilityReportSender
 
 internal interface ApiModule {
 
