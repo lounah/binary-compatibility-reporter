@@ -1,7 +1,6 @@
 package com.lounah.ktbinaryreporter.internal.compatators.methods.filters
 
 import com.lounah.ktbinaryreporter.ViolationRule
-import com.lounah.ktbinaryreporter.internal.compatators.util.isAbstract
 import kotlinx.validation.api.ClassBinarySignature
 import kotlinx.validation.api.MethodBinarySignature
 
