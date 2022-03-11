@@ -12,15 +12,19 @@ internal class MethodBecameAbstract : ViolationRule.Method {
         oldMethod: MethodBinarySignature,
         newMethod: MethodBinarySignature?
     ): String {
-        return "Method `${clazz?.name}#${newMethod?.name} became abstract.`"
+        return "Method `${clazz?.name}#${newMethod?.name}` became abstract."
     }
 
-    override fun matches(oldSignature: MethodBinarySignature?, newSignature: MethodBinarySignature?): Boolean {
+    override fun matches(clazz: ClassBinarySignature?, oldSignature: MethodBinarySignature?, newSignature: MethodBinarySignature?): Boolean {
         return when {
             oldSignature != null && newSignature != null -> {
-                oldSignature.access.isAbstract.not() && newSignature.access.isAbstract
+                oldSignature.becameAbstract(newSignature)
             }
             else -> false
         }
+    }
+
+    private fun MethodBinarySignature.becameAbstract(compareTo: MethodBinarySignature): Boolean {
+        return access != compareTo.access && !access.isAbstract && compareTo.access.isAbstract
     }
 }

@@ -14,7 +14,7 @@ internal class MethodWasRenamedOrRemoved : ViolationRule.Method {
         return "Method `${clazz?.name}#${oldMethod.name}` was renamed or deleted."
     }
 
-    override fun matches(oldSignature: MethodBinarySignature?, newSignature: MethodBinarySignature?): Boolean {
+    override fun matches(clazz: ClassBinarySignature?, oldSignature: MethodBinarySignature?, newSignature: MethodBinarySignature?): Boolean {
         return when {
             oldSignature != null && newSignature != null -> {
                 oldSignature.name != newSignature.name
