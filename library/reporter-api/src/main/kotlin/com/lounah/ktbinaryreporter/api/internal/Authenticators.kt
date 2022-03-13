@@ -1,7 +1,6 @@
 package com.lounah.ktbinaryreporter.api.internal
 
-import okhttp3.Authenticator
-import okhttp3.Credentials
+import okhttp3.*
 
 internal object Authenticators {
 

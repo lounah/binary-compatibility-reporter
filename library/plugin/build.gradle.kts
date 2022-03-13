@@ -10,4 +10,5 @@ dependencies {
     implementation(projects.library.reporterBitbucket)
     implementation(projects.library.reporterGithub)
     implementation(projects.library.reporterGitlab)
+    implementation(libs.kotlinCoroutines)
 }

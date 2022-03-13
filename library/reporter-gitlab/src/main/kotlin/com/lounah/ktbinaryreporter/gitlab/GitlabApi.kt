@@ -1,5 +1,6 @@
 package com.lounah.ktbinaryreporter.gitlab
 
+import com.lounah.ktbinaryreporter.api.Credentials
 import com.lounah.ktbinaryreporter.api.RetrofitProvider
 import retrofit2.create
 import retrofit2.http.Body
@@ -17,29 +18,8 @@ public interface GitlabApi {
 
     public companion object {
 
-        public fun create(
-            username: String,
-            password: String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): GitlabApi {
-            return RetrofitProvider(baseUrl, logging).provide(username, password).create()
-        }
-
-        public fun create(
-            credentials: String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): GitlabApi {
+        public fun create(baseUrl: String, credentials: Credentials, logging: Boolean): GitlabApi {
             return RetrofitProvider(baseUrl, logging).provide(credentials).create()
-        }
-
-        public fun create(
-            tokenProvider: () -> String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): GitlabApi {
-            return RetrofitProvider(baseUrl, logging).provide(tokenProvider).create()
         }
     }
 }

@@ -9,9 +9,7 @@ import java.util.concurrent.TimeUnit
 
 public interface RetrofitProvider {
 
-    public fun provide(tokenProvider: () -> String): Retrofit
-    public fun provide(username: String, password: String): Retrofit
-    public fun provide(credentials: String): Retrofit
+    public fun provide(credentials: Credentials): Retrofit
 
     public companion object {
 
@@ -25,15 +23,24 @@ public interface RetrofitProvider {
         private val logging: Boolean
     ) : RetrofitProvider {
 
-        override fun provide(tokenProvider: () -> String): Retrofit {
+        override fun provide(credentials: Credentials): Retrofit {
+            return when(credentials) {
+                is Credentials.Base64 -> provide(credentials.credentials)
+                is Credentials.Basic -> provide(credentials.username, credentials.password)
+                is Credentials.Bearer -> provide(credentials.tokenProvider)
+                else -> buildRetrofit(Authenticator.NONE)
+            }
+        }
+
+        private fun provide(tokenProvider: () -> String): Retrofit {
             return buildRetrofit(Authenticators.bearer(tokenProvider()))
         }
 
-        override fun provide(username: String, password: String): Retrofit {
+        private fun provide(username: String, password: String): Retrofit {
             return buildRetrofit(Authenticators.basic(username, password))
         }
 
-        override fun provide(credentials: String): Retrofit {
+        private fun provide(credentials: String): Retrofit {
             return buildRetrofit(Authenticators.base64(credentials))
         }
 

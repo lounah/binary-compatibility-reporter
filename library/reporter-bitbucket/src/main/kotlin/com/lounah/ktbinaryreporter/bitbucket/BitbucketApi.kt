@@ -1,12 +1,11 @@
 package com.lounah.ktbinaryreporter.bitbucket
 
+import com.lounah.ktbinaryreporter.api.Credentials
 import com.lounah.ktbinaryreporter.api.RetrofitProvider
-import retrofit2.Call
 import retrofit2.create
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 public interface BitbucketApi {
 
@@ -20,29 +19,8 @@ public interface BitbucketApi {
 
     public companion object {
 
-        public fun create(
-            username: String,
-            password: String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): BitbucketApi {
-            return RetrofitProvider(baseUrl, logging).provide(username, password).create()
-        }
-
-        public fun create(
-            credentials: String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): BitbucketApi {
+        public fun create(baseUrl: String, credentials: Credentials, logging: Boolean): BitbucketApi {
             return RetrofitProvider(baseUrl, logging).provide(credentials).create()
-        }
-
-        public fun create(
-            tokenProvider: () -> String,
-            baseUrl: String,
-            logging: Boolean = false
-        ): BitbucketApi {
-            return RetrofitProvider(baseUrl, logging).provide(tokenProvider).create()
         }
     }
 }

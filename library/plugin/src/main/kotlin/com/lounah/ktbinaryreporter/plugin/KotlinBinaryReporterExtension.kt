@@ -1,5 +1,6 @@
 package com.lounah.ktbinaryreporter.plugin
 
+import com.lounah.ktbinaryreporter.api.Credentials
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.getByType
@@ -24,8 +25,9 @@ class KotlinBinaryReporterExtension(
 }
 
 class ReportSettings(
-    var credentials: GitCredentials = GitCredentials.None,
-    var reportTarget: ReportTarget = ReportTarget.None
+    var credentials: Credentials = Credentials.None,
+    var reportTarget: ReportTarget = ReportTarget.Verbose,
+    var enableLogging: Boolean = false
 ) {
 
     fun gitlab(block: ReportTarget.Gitlab.() -> Unit) {
@@ -49,20 +51,19 @@ sealed class ReportTarget {
         val baseUrl: String = ""
     ) : ReportTarget()
 
-    class Github() : ReportTarget()
+    class Github(
+        val baseUrl: String = "",
+        val owner: String = "",
+        val repo: String = "",
+        val pullId: String = ""
+    ) : ReportTarget()
 
-    class Bitbucket() : ReportTarget()
+    class Bitbucket(
+        val baseUrl: String = "",
+        val projectKey: String = "",
+        val repositorySlug: String = "",
+        val pullRequestId: String = ""
+    ) : ReportTarget()
 
-    object None : ReportTarget()
-}
-
-sealed class GitCredentials {
-
-    class Basic(val username: String, val password: String) : GitCredentials()
-
-    class Bearer(val token: Provider<String>) : GitCredentials()
-
-    class Base64(val credentials: String) : GitCredentials()
-
-    object None : GitCredentials()
+    object Verbose : ReportTarget()
 }

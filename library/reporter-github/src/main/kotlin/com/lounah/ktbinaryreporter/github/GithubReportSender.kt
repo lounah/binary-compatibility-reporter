@@ -5,7 +5,7 @@ import com.lounah.ktbinaryreporter.BinaryCompatibilityReportSender
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-public class GitlabReportSender(
+public class GithubReportSender(
     private val api: GithubApi,
     private val owner: String,
     private val repo: String,

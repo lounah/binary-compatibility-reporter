@@ -1,5 +1,6 @@
 package com.lounah.ktbinaryreporter.github
 
+import com.lounah.ktbinaryreporter.api.Credentials
 import com.lounah.ktbinaryreporter.api.RetrofitProvider
 import retrofit2.create
 import retrofit2.http.Body
@@ -18,31 +19,8 @@ public interface GithubApi {
 
     public companion object {
 
-        private const val BASE_URL: String = "https://api.github.com/"
-
-        public fun create(
-            username: String,
-            password: String,
-            baseUrl: String = BASE_URL,
-            logging: Boolean = false
-        ): GithubApi {
-            return RetrofitProvider(baseUrl, logging).provide(username, password).create()
-        }
-
-        public fun create(
-            credentials: String,
-            baseUrl: String = BASE_URL,
-            logging: Boolean = false
-        ): GithubApi {
+        public fun create(baseUrl: String, credentials: Credentials, logging: Boolean): GithubApi {
             return RetrofitProvider(baseUrl, logging).provide(credentials).create()
-        }
-
-        public fun create(
-            tokenProvider: () -> String,
-            baseUrl: String = BASE_URL,
-            logging: Boolean = false
-        ): GithubApi {
-            return RetrofitProvider(baseUrl, logging).provide(tokenProvider).create()
         }
     }
 }

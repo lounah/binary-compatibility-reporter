@@ -5,7 +5,6 @@ plugins {
 }
 
 dependencies {
-    api(libs.kotlinCoroutines)
     api(libs.retrofit)
     api(libs.okhttpLogging)
 }
