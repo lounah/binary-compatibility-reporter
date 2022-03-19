@@ -23,5 +23,4 @@ dependencyResolutionManagement {
 include("kotlin")
 include("testing")
 include("util")
-//include("checks")
-//include("publishing")
+include("publishing")

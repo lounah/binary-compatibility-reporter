@@ -14,11 +14,8 @@ public class BitbucketReportSender(
 
     override suspend fun send(verdict: Verdict) {
         return withContext(Dispatchers.IO) {
-            api.sendComment(projectKey, repositorySlug, pullRequestId, verdict.asBitbucketComment())
+            val comment = Comment(verdict.toString())
+            api.sendComment(projectKey, repositorySlug, pullRequestId, comment)
         }
-    }
-
-    private fun Verdict.asBitbucketComment(): Comment {
-        return Comment(this.toString())
     }
 }

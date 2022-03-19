@@ -13,11 +13,7 @@ public class GitlabReportSender(
 
     override suspend fun send(verdict: Verdict) {
         return withContext(Dispatchers.IO) {
-            api.sendComment(projectId, mrId, verdict.asGitlabComment())
+            api.sendComment(projectId, mrId, verdict.toString())
         }
-    }
-
-    private fun Verdict.asGitlabComment(): String {
-        return this.toString()
     }
 }

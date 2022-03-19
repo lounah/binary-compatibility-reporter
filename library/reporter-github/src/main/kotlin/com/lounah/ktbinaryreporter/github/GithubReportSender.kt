@@ -14,11 +14,7 @@ public class GithubReportSender(
 
     override suspend fun send(verdict: Verdict) {
         return withContext(Dispatchers.IO) {
-            api.sendComment(owner, repo, pullId, verdict.asGithubComment())
+            api.sendComment(owner, repo, pullId, verdict.toString())
         }
-    }
-
-    private fun Verdict.asGithubComment(): String {
-        return this.toString()
     }
 }

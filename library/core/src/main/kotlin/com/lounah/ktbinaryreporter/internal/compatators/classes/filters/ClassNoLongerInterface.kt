@@ -10,7 +10,7 @@ internal class ClassNoLongerInterface : ViolationRule.Class {
         oldClass: ClassBinarySignature?,
         newClass: ClassBinarySignature?
     ): String {
-        return "Class `${oldClass?.name}` was interface, now it is not."
+        return "Class `${oldClass?.name}` was an interface, now it is not."
     }
 
     override fun matches(

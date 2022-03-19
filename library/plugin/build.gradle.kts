@@ -2,6 +2,7 @@
 
 plugins {
     id("convention.kotlin-base")
+    id("convention.publish-gradle-plugin")
     `kotlin-dsl`
 }
 
