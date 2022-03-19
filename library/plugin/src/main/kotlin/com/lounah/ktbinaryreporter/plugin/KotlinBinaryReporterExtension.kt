@@ -3,9 +3,10 @@ package com.lounah.ktbinaryreporter.plugin
 import com.lounah.ktbinaryreporter.api.Credentials
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
+import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.getByType
 
-class KotlinBinaryReporterExtension(
+open class KotlinBinaryReporterExtension(
     var abiVersion: String = "",
     var reporter: ReportSettings = ReportSettings(),
     var ignoredPackages: Set<String> = emptySet(),
@@ -46,23 +47,23 @@ class ReportSettings(
 sealed class ReportTarget {
 
     class Gitlab(
-        val projectId: String = "",
-        val mrId: String = "",
-        val baseUrl: String = ""
+        var projectId: String = "",
+        var mrId: String = "",
+        var baseUrl: String = ""
     ) : ReportTarget()
 
     class Github(
-        val baseUrl: String = "",
-        val owner: String = "",
-        val repo: String = "",
-        val pullId: String = ""
+        var baseUrl: String = "",
+        var owner: String = "",
+        var repo: String = "",
+        var pullId: String = ""
     ) : ReportTarget()
 
     class Bitbucket(
-        val baseUrl: String = "",
-        val projectKey: String = "",
-        val repositorySlug: String = "",
-        val pullRequestId: String = ""
+        var baseUrl: String = "",
+        var projectKey: String = "",
+        var repositorySlug: String = "",
+        var pullRequestId: String = ""
     ) : ReportTarget()
 
     object Verbose : ReportTarget()

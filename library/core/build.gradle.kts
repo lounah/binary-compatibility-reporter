@@ -7,7 +7,7 @@ plugins {
 
 dependencies {
     api(libs.kotlinBinaryCompatibility)
-    implementation(projects.library.descriptor)
+    implementation(projects.descriptor)
     implementation(libs.asm)
     implementation(libs.asmTree)
 }

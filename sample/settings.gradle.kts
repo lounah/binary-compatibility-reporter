@@ -13,3 +13,6 @@ plugins {
 
 includeBuild("../build-conventions")
 includeBuild("../library")
+
+include(":root-project")
+include(":common-project")

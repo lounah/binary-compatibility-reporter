@@ -7,8 +7,19 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.library.core)
-    implementation(projects.library.reporterBitbucket)
-    implementation(projects.library.reporterGithub)
-    implementation(projects.library.reporterGitlab)
+    implementation(projects.core)
+    implementation(projects.reporterBitbucket)
+    implementation(projects.reporterGithub)
+    implementation(projects.reporterGitlab)
+}
+
+gradlePlugin {
+    plugins {
+        create("Kotlin Binary Compatibility Reporter") {
+            id = "com.lounah.kt-binary-reporter"
+            implementationClass = "com.lounah.ktbinaryreporter.plugin.KotlinBinaryReporterPlugin"
+            displayName = "Kotlin Binary Compatibility Reporter Plugin"
+            description = "Kotlin Binary Compatibility checker, which performs Git reports."
+        }
+    }
 }

@@ -6,11 +6,12 @@ import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.attributes.Attribute
 import org.gradle.api.file.FileCollection
+import org.gradle.kotlin.dsl.create
 
 class KotlinBinaryReporterPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        val extension = KotlinBinaryReporterExtension.get(project)
+        val extension = project.extensions.create<KotlinBinaryReporterExtension>("ktBinaryReporter")
         project.tasks
             .register("checkBinaryCompatibility", CheckBinaryCompatibilityTask::class.java)
             .configure {

@@ -1,7 +1,7 @@
 package com.lounah.ktbinaryreporter.internal.compatators.util
 
-import jdk.internal.org.objectweb.asm.Opcodes
 import kotlinx.validation.api.AccessFlags
+import org.objectweb.asm.Opcodes
 
 internal inline val AccessFlags.isAbstract: Boolean
     get() = access and Opcodes.ACC_ABSTRACT != 0

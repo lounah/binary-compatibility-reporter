@@ -7,6 +7,6 @@ plugins {
 
 dependencies {
     api(libs.kotlinCoroutines)
-    api(projects.library.core)
-    api(projects.library.reporterApi)
+    api(projects.core)
+    api(projects.reporterApi)
 }
