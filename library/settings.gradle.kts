@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "sample"
+rootProject.name = "library"
 
 pluginManagement {
     includeBuild("../build-settings")
@@ -12,4 +12,11 @@ plugins {
 }
 
 includeBuild("../build-conventions")
-includeBuild("../library")
+
+include(":core")
+include(":descriptor")
+include(":reporter-api")
+include(":reporter-bitbucket")
+include(":reporter-github")
+include(":reporter-gitlab")
+include(":plugin")

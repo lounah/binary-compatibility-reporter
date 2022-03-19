@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.lounah.kotlin-binary-reporter.buildconventions"
+group = "com.lounah.kt-binary-reporter.buildconventions"
 
 dependencies {
     // workaround for https://github.com/gradle/gradle/issues/15383

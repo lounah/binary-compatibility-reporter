@@ -6,18 +6,9 @@ pluginManagement {
     includeBuild("../build-settings")
 }
 
-
 plugins {
     id("convention-plugins")
     id("convention-dependencies")
-}
-
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from(files("../gradle/libs.versions.toml"))
-        }
-    }
 }
 
 include("kotlin")

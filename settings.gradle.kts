@@ -1,26 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
-enableFeaturePreview("VERSION_CATALOGS")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 rootProject.name = "kotlin-binary-compatibility-reporter"
 
-pluginManagement {
-    includeBuild("build-settings")
-}
-
-plugins {
-    id("convention-dependencies")
-    id("convention-plugins")
-}
-
+includeBuild("build-settings")
 includeBuild("build-conventions")
+includeBuild("library")
 includeBuild("sample")
-
-include(":library:core")
-include(":library:descriptor")
-include(":library:reporter-api")
-include(":library:reporter-bitbucket")
-include(":library:reporter-github")
-include(":library:reporter-gitlab")
-include(":library:plugin")
