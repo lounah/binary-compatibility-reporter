@@ -4,13 +4,11 @@ import com.lounah.ktbinaryreporter.plugin.internal.di.KotlinBinaryReporterCompon
 import kotlinx.coroutines.*
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
-import org.gradle.api.tasks.InputFiles
-import org.gradle.api.tasks.PathSensitive
-import org.gradle.api.tasks.PathSensitivity
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.*
 
 abstract class CheckBinaryCompatibilityTask : DefaultTask() {
 
+    @get:Optional
     @get:InputFiles
     @get:PathSensitive(PathSensitivity.NONE)
     abstract var previousABI: FileCollection?
@@ -21,7 +19,10 @@ abstract class CheckBinaryCompatibilityTask : DefaultTask() {
 
     @TaskAction
     fun run() {
-        requireNotNull(previousABI) { logger.info("Could not resolve previous api. Skipping task.") }
+        if (previousABI == null) {
+            logger.info("Could not resolve previous api. Skipping task.")
+            return
+        }
 
         val component = KotlinBinaryReporterComponent(project)
         val previousClasses = component.extractClasses(previousABI!!)

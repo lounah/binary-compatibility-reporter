@@ -8,6 +8,7 @@ import org.gradle.api.attributes.Attribute
 import org.gradle.api.file.FileCollection
 import org.gradle.kotlin.dsl.create
 
+@Suppress("unused")
 class KotlinBinaryReporterPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
@@ -17,6 +18,7 @@ class KotlinBinaryReporterPlugin : Plugin<Project> {
             .configure {
                 currentABI = project.createCurrentABIConfiguration()
                 previousABI = project.createPreviousABIConfiguration(extension.abiVersion)
+                group = "verification"
             }
     }
 
