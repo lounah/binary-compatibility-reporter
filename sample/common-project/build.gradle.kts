@@ -7,7 +7,7 @@ plugins {
 }
 
 ktBinaryReporter {
-    abiVersion = "0.1.0"
+    abiVersion = "0.1.1"
 
     ignoredClasses = setOf("")
     ignoredPackages = setOf("")
