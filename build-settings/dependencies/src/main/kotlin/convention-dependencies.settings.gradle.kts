@@ -7,6 +7,7 @@ dependencyResolutionManagement {
 
     repositories {
         mavenCentral()
+        mavenLocal()
     }
 
     versionCatalogs {

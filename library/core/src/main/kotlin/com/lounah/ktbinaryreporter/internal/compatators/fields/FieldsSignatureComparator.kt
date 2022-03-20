@@ -4,10 +4,7 @@ import com.lounah.ktbinaryreporter.BinaryCompatibilityViolation
 import com.lounah.ktbinaryreporter.BinaryCompatibilityViolation.FieldSignature
 import com.lounah.ktbinaryreporter.BinarySignatureComparator
 import com.lounah.ktbinaryreporter.ViolationRule
-import com.lounah.ktbinaryreporter.internal.compatators.classes.filters.ClassBecameFinal
-import com.lounah.ktbinaryreporter.internal.compatators.classes.filters.ClassNameChanged
-import com.lounah.ktbinaryreporter.internal.compatators.classes.filters.ClassVisibilityLessen
-import com.lounah.ktbinaryreporter.internal.compatators.classes.filters.ClassSupertypesChanged
+import com.lounah.ktbinaryreporter.internal.compatators.fields.filters.FieldVisibilityLessen
 import com.lounah.ktbinaryreporter.internal.compatators.fields.filters.FieldWasDeprecated
 import com.lounah.ktbinaryreporter.internal.compatators.fields.filters.FieldWasRenamedOrRemoved
 import kotlinx.validation.api.ClassBinarySignature
@@ -17,7 +14,8 @@ public class FieldsSignatureComparator : BinarySignatureComparator {
 
     override val rules: Set<ViolationRule.Field> = setOf(
         FieldWasDeprecated(),
-        FieldWasRenamedOrRemoved()
+        FieldWasRenamedOrRemoved(),
+        FieldVisibilityLessen()
     )
 
     override fun compare(

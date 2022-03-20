@@ -2,12 +2,10 @@ package com.lounah.ktbinaryreporter.plugin
 
 import com.lounah.ktbinaryreporter.api.Credentials
 import org.gradle.api.Project
-import org.gradle.api.provider.Provider
-import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.getByType
 
 open class KotlinBinaryReporterExtension(
-    var abiVersion: String = "",
+    var abiVersion: String = "latest",
     var reporter: ReportSettings = ReportSettings(),
     var ignoredPackages: Set<String> = emptySet(),
     var ignoredClasses: Set<String> = emptySet()
