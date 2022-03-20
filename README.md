@@ -1,4 +1,4 @@
-# binary-compatibility-reproter
+# binary-compatibility-reporter
 Kotlin binary compatibility validator, which performs git reports
 
 # WIP
